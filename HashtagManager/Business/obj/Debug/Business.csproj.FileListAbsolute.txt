@@ -1,0 +1,15 @@
+C:\Users\andre\source\Workspaces\HashTagManager\HashtagManager1\HashtagManager\Business\bin\Debug\Business.dll.config
+C:\Users\andre\source\Workspaces\HashTagManager\HashtagManager1\HashtagManager\Business\bin\Debug\Business.dll
+C:\Users\andre\source\Workspaces\HashTagManager\HashtagManager1\HashtagManager\Business\bin\Debug\Business.pdb
+C:\Users\andre\source\Workspaces\HashTagManager\HashtagManager1\HashtagManager\Business\bin\Debug\EntityFramework.dll
+C:\Users\andre\source\Workspaces\HashTagManager\HashtagManager1\HashtagManager\Business\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\andre\source\Workspaces\HashTagManager\HashtagManager1\HashtagManager\Business\bin\Debug\Model.dll
+C:\Users\andre\source\Workspaces\HashTagManager\HashtagManager1\HashtagManager\Business\bin\Debug\Model.pdb
+C:\Users\andre\source\Workspaces\HashTagManager\HashtagManager1\HashtagManager\Business\bin\Debug\Model.dll.config
+C:\Users\andre\source\Workspaces\HashTagManager\HashtagManager1\HashtagManager\Business\bin\Debug\EntityFramework.xml
+C:\Users\andre\source\Workspaces\HashTagManager\HashtagManager1\HashtagManager\Business\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\andre\source\Workspaces\HashTagManager\HashtagManager1\HashtagManager\Business\obj\Debug\Business.csprojAssemblyReference.cache
+C:\Users\andre\source\Workspaces\HashTagManager\HashtagManager1\HashtagManager\Business\obj\Debug\Business.csproj.CoreCompileInputs.cache
+C:\Users\andre\source\Workspaces\HashTagManager\HashtagManager1\HashtagManager\Business\obj\Debug\Business.csproj.CopyComplete
+C:\Users\andre\source\Workspaces\HashTagManager\HashtagManager1\HashtagManager\Business\obj\Debug\Business.dll
+C:\Users\andre\source\Workspaces\HashTagManager\HashtagManager1\HashtagManager\Business\obj\Debug\Business.pdb

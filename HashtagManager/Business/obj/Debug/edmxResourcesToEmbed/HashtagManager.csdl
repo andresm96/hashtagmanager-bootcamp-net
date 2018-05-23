@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HashtagManagerEntities" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Entry">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="message" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="date" Type="DateTime" Precision="3" />
+    <Property Name="id_user" Type="Int32" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Entry_User" FromRole="Entry" ToRole="User" />
+    <NavigationProperty Name="Hashtags" Relationship="Self.entry_hashtag" FromRole="Entry" ToRole="Hashtag" />
+  </EntityType>
+  <EntityType Name="Hashtag">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Entries" Relationship="Self.entry_hashtag" FromRole="Hashtag" ToRole="Entry" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="userName" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Entries" Relationship="Self.FK_Entry_User" FromRole="User" ToRole="Entry" />
+  </EntityType>
+  <Association Name="FK_Entry_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Entry" Type="Self.Entry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Entry">
+        <PropertyRef Name="id_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="entry_hashtag">
+    <End Role="Entry" Type="Self.Entry" Multiplicity="*" />
+    <End Role="Hashtag" Type="Self.Hashtag" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="HashtagManagerModel" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Entries" EntityType="Self.Entry" />
+    <EntitySet Name="Hashtags" EntityType="Self.Hashtag" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_Entry_User" Association="Self.FK_Entry_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Entry" EntitySet="Entries" />
+    </AssociationSet>
+    <AssociationSet Name="entry_hashtag" Association="Self.entry_hashtag">
+      <End Role="Entry" EntitySet="Entries" />
+      <End Role="Hashtag" EntitySet="Hashtags" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

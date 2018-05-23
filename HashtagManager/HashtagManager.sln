@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2000
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIWeb", "UIWeb\UIWeb.csproj", "{343F8CF9-3446-42DC-AE1F-580A96AB7550}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Business.csproj", "{3B5ABE54-D519-41E2-8772-AE756660F725}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{197C1E17-048F-410E-845D-9F306CC62AE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessTest", "BusinessTest\BusinessTest.csproj", "{44F4362E-AD40-461C-9F55-8DD640971A77}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{343F8CF9-3446-42DC-AE1F-580A96AB7550}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{343F8CF9-3446-42DC-AE1F-580A96AB7550}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{343F8CF9-3446-42DC-AE1F-580A96AB7550}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{343F8CF9-3446-42DC-AE1F-580A96AB7550}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B5ABE54-D519-41E2-8772-AE756660F725}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B5ABE54-D519-41E2-8772-AE756660F725}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B5ABE54-D519-41E2-8772-AE756660F725}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B5ABE54-D519-41E2-8772-AE756660F725}.Release|Any CPU.Build.0 = Release|Any CPU
+		{197C1E17-048F-410E-845D-9F306CC62AE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{197C1E17-048F-410E-845D-9F306CC62AE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{197C1E17-048F-410E-845D-9F306CC62AE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{197C1E17-048F-410E-845D-9F306CC62AE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44F4362E-AD40-461C-9F55-8DD640971A77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44F4362E-AD40-461C-9F55-8DD640971A77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44F4362E-AD40-461C-9F55-8DD640971A77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44F4362E-AD40-461C-9F55-8DD640971A77}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {03924591-BC58-49B0-AA1C-3847453593C0}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 5
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://globant-bootcampnet-amalvestiti.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Business\\Business.csproj
+		SccProjectName1 = Business
+		SccLocalPath1 = Business
+		SccProjectUniqueName2 = Model\\Model.csproj
+		SccProjectName2 = Model
+		SccLocalPath2 = Model
+		SccProjectUniqueName3 = UIWeb\\UIWeb.csproj
+		SccProjectName3 = UIWeb
+		SccLocalPath3 = UIWeb
+		SccProjectUniqueName4 = BusinessTest\\BusinessTest.csproj
+		SccProjectName4 = BusinessTest
+		SccLocalPath4 = BusinessTest
+	EndGlobalSection
+EndGlobal

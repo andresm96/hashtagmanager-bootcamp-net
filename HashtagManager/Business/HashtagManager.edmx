@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HashtagManagerEntities.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Entry">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="message" Type="nvarchar" MaxLength="200" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="id_user" Type="int" />
+        </EntityType>
+        <EntityType Name="entry_hashtag">
+          <Key>
+            <PropertyRef Name="id_entry" />
+            <PropertyRef Name="id_hashtag" />
+          </Key>
+          <Property Name="id_entry" Type="int" Nullable="false" />
+          <Property Name="id_hashtag" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Hashtag">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="userName" Type="nvarchar" MaxLength="15" />
+          <Property Name="password" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK_entry_hashtag_Entry">
+          <End Role="Entry" Type="Self.Entry" Multiplicity="1" />
+          <End Role="entry_hashtag" Type="Self.entry_hashtag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Entry">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="entry_hashtag">
+              <PropertyRef Name="id_entry" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_entry_hashtag_Hashtag">
+          <End Role="Hashtag" Type="Self.Hashtag" Multiplicity="1" />
+          <End Role="entry_hashtag" Type="Self.entry_hashtag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hashtag">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="entry_hashtag">
+              <PropertyRef Name="id_hashtag" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Entry_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Entry" Type="Self.Entry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Entry">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HashtagManagerEntitiesStoreContainer">
+          <EntitySet Name="Entry" EntityType="Self.Entry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="entry_hashtag" EntityType="Self.entry_hashtag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hashtag" EntityType="Self.Hashtag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_entry_hashtag_Entry" Association="Self.FK_entry_hashtag_Entry">
+            <End Role="Entry" EntitySet="Entry" />
+            <End Role="entry_hashtag" EntitySet="entry_hashtag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_entry_hashtag_Hashtag" Association="Self.FK_entry_hashtag_Hashtag">
+            <End Role="Hashtag" EntitySet="Hashtag" />
+            <End Role="entry_hashtag" EntitySet="entry_hashtag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Entry_User" Association="Self.FK_Entry_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Entry" EntitySet="Entry" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HashtagManagerEntities" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Entry">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="message" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="id_user" Type="Int32" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Entry_User" FromRole="Entry" ToRole="User" />
+          <NavigationProperty Name="Hashtags" Relationship="Self.entry_hashtag" FromRole="Entry" ToRole="Hashtag" />
+        </EntityType>
+        <EntityType Name="Hashtag">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Entries" Relationship="Self.entry_hashtag" FromRole="Hashtag" ToRole="Entry" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="userName" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Entries" Relationship="Self.FK_Entry_User" FromRole="User" ToRole="Entry" />
+        </EntityType>
+        <Association Name="FK_Entry_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Entry" Type="Self.Entry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Entry">
+              <PropertyRef Name="id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="entry_hashtag">
+          <End Role="Entry" Type="Self.Entry" Multiplicity="*" />
+          <End Role="Hashtag" Type="Self.Hashtag" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="HashtagManagerModel" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Entries" EntityType="Self.Entry" />
+          <EntitySet Name="Hashtags" EntityType="Self.Hashtag" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_Entry_User" Association="Self.FK_Entry_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Entry" EntitySet="Entries" />
+          </AssociationSet>
+          <AssociationSet Name="entry_hashtag" Association="Self.entry_hashtag">
+            <End Role="Entry" EntitySet="Entries" />
+            <End Role="Hashtag" EntitySet="Hashtags" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HashtagManagerEntitiesStoreContainer" CdmEntityContainer="HashtagManagerModel">
+          <EntitySetMapping Name="Entries">
+            <EntityTypeMapping TypeName="HashtagManagerEntities.Entry">
+              <MappingFragment StoreEntitySet="Entry">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="message" ColumnName="message" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hashtags">
+            <EntityTypeMapping TypeName="HashtagManagerEntities.Hashtag">
+              <MappingFragment StoreEntitySet="Hashtag">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="HashtagManagerEntities.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="entry_hashtag" TypeName="HashtagManagerEntities.entry_hashtag" StoreEntitySet="entry_hashtag">
+            <EndProperty Name="Entry">
+              <ScalarProperty Name="ID" ColumnName="id_entry" />
+            </EndProperty>
+            <EndProperty Name="Hashtag">
+              <ScalarProperty Name="ID" ColumnName="id_hashtag" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

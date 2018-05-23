@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HashtagManagerEntitiesStoreContainer" CdmEntityContainer="HashtagManagerModel">
+    <EntitySetMapping Name="Entries">
+      <EntityTypeMapping TypeName="HashtagManagerEntities.Entry">
+        <MappingFragment StoreEntitySet="Entry">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Hashtags">
+      <EntityTypeMapping TypeName="HashtagManagerEntities.Hashtag">
+        <MappingFragment StoreEntitySet="Hashtag">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="HashtagManagerEntities.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="entry_hashtag" TypeName="HashtagManagerEntities.entry_hashtag" StoreEntitySet="entry_hashtag">
+      <EndProperty Name="Entry">
+        <ScalarProperty Name="ID" ColumnName="id_entry" />
+      </EndProperty>
+      <EndProperty Name="Hashtag">
+        <ScalarProperty Name="ID" ColumnName="id_hashtag" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

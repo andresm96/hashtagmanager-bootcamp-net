@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Model.Entry>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class=" container-fluid jumbotron color-blue text-white">
+    <h1 class="">Welcome #Hashtagger</h1>
+    <p class="lead">The best social net to share everything with your friends!</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        @Html.Partial("_Hashtags", new Model.Hashtag())
+    </div>
+    <div class="col-md-8">
+        @if (Session["user"] != null)
+        {
+            @Html.Partial("_NewEntry", new Model.Entry())
+        }
+    </div>
+</div>
+<div class="row">
+    
+
+        @if (Model.ToList().FirstOrDefault() == null)
+        {
+            <h4>No entries available.</h4>
+        }
+        else
+        {
+            <ul class="list-group">
+                @foreach (var item in Model)
+                {
+                    <li class="list-group-item">
+                        <br />
+                        <p class="list-group-item-heading">
+                            <strong>
+                                @Html.DisplayFor(modelItem => item.User.userName)
+                            </strong> - <span class="text-muted">@Html.DisplayFor(modelItem => item.date)</span>
+                        </p>
+                        <br />
+                        <p class="list-group-item-text">
+                            @Html.DisplayFor(modelItem => item.message)
+                        </p>
+                        <br />
+                    </li>
+
+                }
+            </ul>
+        }
+
+    
+</div>
